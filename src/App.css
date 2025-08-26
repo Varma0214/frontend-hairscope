@@ -1,139 +1,122 @@
-.app {
-  font-family: Arial, sans-serif;
-  text-align: center;
+/* General Layout */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+  color: white;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #0a0f24;
-  color: white;
 }
 
-.login-screen, .lab-screen {
-  background: #111831;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 0px 20px rgba(0,0,0,0.6);
-  width: 350px;
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+}
+
+/* Login Screen */
+.login-screen {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
 input {
-  padding: 10px;
-  margin: 10px;
-  border-radius: 6px;
+  padding: 12px;
+  width: 80%;
   border: none;
+  border-radius: 10px;
+  font-size: 1rem;
   outline: none;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 12px 25px;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin: 10px 5px;
-  background: #2563eb;
-  color: white;
+  border-radius: 12px;
+  font-size: 1rem;
   font-weight: bold;
-  transition: background 0.3s;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
-  background: #1e40af;
+  background: #2563eb;
+  transform: scale(1.05);
 }
 
 .error {
+  margin-top: 15px;
   color: #f87171;
-  margin-top: 10px;
+  font-weight: bold;
 }
 
-/* Tech buttons */
-.tech-buttons {
+/* Lab Screen */
+.lab-screen {
+  animation: fadeIn 1s ease-in-out;
+}
+
+.top-bar {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 15px 0;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
 }
 
-.tech-buttons button {
-  background: #3b82f6;
-  margin: 5px;
-  flex: 1 0 40%;
-}
-
-.tech-info {
-  background: #1e293b;
-  margin: 15px 0;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.exit {
+.exit-btn {
   background: #ef4444;
 }
 
-.exit:hover {
-  background: #b91c1c;
+.exit-btn:hover {
+  background: #dc2626;
 }
 
-/* Lock + door animation */
-.animation {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 30px auto;
+.lab-title {
+  font-size: 2rem;
+  margin-bottom: 25px;
 }
 
-.lock {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60px;
-  height: 60px;
-  margin: -30px;
-  border-radius: 50%;
-  background: #3b82f6;
-  animation: spin 2s linear infinite, fadeOut 2.5s forwards;
+/* Technology Buttons */
+.tech-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
-.door {
-  position: absolute;
-  top: 0;
-  width: 50%;
-  height: 100%;
-  background: #1e293b;
-  transition: transform 2.5s ease-in-out;
+.tech {
+  font-size: 1.5rem;
+  padding: 25px 40px;
+  min-width: 150px;
+  min-height: 80px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.door.left {
-  left: 0;
-  transform-origin: left;
-  animation: doorLeft 2.5s forwards;
+.tech:hover {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  transform: translateY(-5px);
 }
 
-.door.right {
-  right: 0;
-  transform-origin: right;
-  animation: doorRight 2.5s forwards;
-}
-
-@keyframes spin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes fadeOut {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-@keyframes doorLeft {
-  0% { transform: rotateY(0); }
-  100% { transform: rotateY(-90deg); }
-}
-
-@keyframes doorRight {
-  0% { transform: rotateY(0); }
-  100% { transform: rotateY(90deg); }
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
