@@ -17,6 +17,58 @@ body {
   padding: 20px;
 }
 
+/* Animation Screen */
+.animation-screen {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.lock-icon {
+  font-size: 5rem;
+  animation: rotateFade 2s ease forwards;
+  z-index: 2;
+}
+
+.door {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: #1e293b;
+  z-index: 1;
+}
+
+.left-door {
+  left: 0;
+  animation: slideLeft 2.5s forwards;
+}
+
+.right-door {
+  right: 0;
+  animation: slideRight 2.5s forwards;
+}
+
+/* Lock Animation */
+@keyframes rotateFade {
+  0% { transform: rotate(0deg); opacity: 1; }
+  100% { transform: rotate(720deg) scale(0); opacity: 0; }
+}
+
+@keyframes slideLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes slideRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
 /* Login Screen */
 .login-screen {
   background: rgba(255, 255, 255, 0.05);

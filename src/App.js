@@ -9,6 +9,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState("");
   const [timeLeft, setTimeLeft] = useState(INITIAL_TIME);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     let timer;
@@ -24,8 +25,12 @@ function App() {
 
   const handleLogin = () => {
     if (password === CORRECT_PASSWORD && timeLeft > 0) {
-      setIsAuthenticated(true);
       setError("");
+      setIsAnimating(true); // start animation
+      setTimeout(() => {
+        setIsAuthenticated(true);
+        setIsAnimating(false);
+      }, 3000); // animation duration (3s)
     } else {
       setError("❌ Wrong password or time expired.");
     }
@@ -44,7 +49,13 @@ function App() {
 
   return (
     <div className="container">
-      {!isAuthenticated ? (
+      {isAnimating ? (
+        <div className="animation-screen">
+          <div className="lock-icon">🔒</div>
+          <div className="door left-door"></div>
+          <div className="door right-door"></div>
+        </div>
+      ) : !isAuthenticated ? (
         <div className="login-screen">
           <h1 className="title">🔒 Lab Entry</h1>
           <input
